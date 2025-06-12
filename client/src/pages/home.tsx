@@ -164,7 +164,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
               </div>
               <h3 className="text-2xl font-semibold mb-3 text-man-cave-accent font-serif">Styling</h3>
-              <p className="text-man-cave-light leading-relaxed">Professional styling and grooming using our excellent products and craftmanship, for the perfect finish.</p>
+              <p className="text-man-cave-light leading-relaxed">Styling and grooming that makes you look your finest.</p> 
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function Home() {
               At Man Cave, Jerome and Kenny keep things simple — great haircuts, clean shaves, and a friendly vibe. Whether you need a fresh trim, a classic shave, or a cool cut for the kids, they'll make sure you leave looking sharp and feeling good. 
               </p>
               <p className="text-lg text-man-cave-light leading-relaxed">
-              Step into the ManCave and experience the difference that attention to detail, excellent products, and old-school ways can make.
+              Step into the Man Cave and experience the difference that attention to detail, excellent products, and old-school ways can make.
               </p>
             </div>
             <div className="relative">
