@@ -27,10 +27,12 @@
   --radius: 0.5rem;
   
   /* Man Cave Custom Colors */
-  --man-cave-primary: 0 0% 10.2%; /* #1A1A1A */
-  --man-cave-secondary: 0 0% 17.6%; /* #2D2D2D */
-  --man-cave-accent: 42 45% 62%; /* #C9AA71 */
-  --man-cave-text-light: 0 0% 69%; /* #B0B0B0 */
+  --man-cave-primary: #1a1a1a; /* Charcoal */
+  --man-cave-secondary: #2a2a2a; /* Gunmetal */
+  --man-cave-accent: #c0c0c0; /* Metallic silver */
+  --man-cave-light: #e0e0e0; /* Light gray */
+  --man-cave-dark: #0a0a0a; /* Matte black */
+  --man-cave-texture: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a1a1a" /><path d="M0 0 L100 100 M100 0 L0 100" stroke="%232a2a2a" stroke-width="0.5" /></svg>');
 }
 
 .dark {
@@ -63,9 +65,11 @@
 
   body {
     @apply font-sans antialiased;
-    background-color: hsl(var(--man-cave-primary));
-    color: white;
+    background-color: var(--man-cave-primary);
+    color: var(--man-cave-light);
     font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
   }
   
   html {
@@ -91,7 +95,7 @@
   }
   
   .text-man-cave-light {
-    color: hsl(var(--man-cave-text-light));
+    color: hsl(var(--man-cave-light));
   }
   
   .border-man-cave-accent {
@@ -104,5 +108,67 @@
   
   .font-sans {
     font-family: 'Inter', sans-serif;
+  }
+
+  nav {
+    background-color: var(--man-cave-secondary);
+    border-bottom: 1px solid var(--man-cave-accent);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  nav h1 {
+    color: var(--man-cave-accent);
+  }
+
+  nav button, nav a {
+    color: var(--man-cave-light);
+    transition: color 0.3s ease;
+  }
+
+  nav button:hover, nav a:hover {
+    color: var(--man-cave-accent);
+  }
+
+  #home {
+    background-color: var(--man-cave-dark);
+    background-image: var(--man-cave-texture);
+  }
+
+  #home h1 {
+    color: var(--man-cave-accent);
+  }
+
+  #home p {
+    color: var(--man-cave-light);
+  }
+
+  #about, #hours, #contact {
+    background-color: var(--man-cave-secondary);
+    border-top: 1px solid var(--man-cave-accent);
+  }
+
+  #about h2, #hours h2, #contact h2 {
+    color: var(--man-cave-accent);
+  }
+
+  #about p, #hours p, #contact p {
+    color: var(--man-cave-light);
+  }
+
+  /* Image containers with subtle borders and overlays */
+  img {
+    border: 2px solid var(--man-cave-accent);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+  }
+
+  img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Subtle modern-retro feel with textures */
+  .bg-texture {
+    background-image: var(--man-cave-texture);
+    opacity: 0.1;
   }
 }
