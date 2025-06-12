@@ -100,7 +100,7 @@ export default function Home() {
             Where Style Meets Precision
           </p>
           <p className="text-lg mb-10 text-man-cave-light max-w-2xl mx-auto leading-relaxed">
-            Experience the finest in men's and kids' haircuts at Smithtown's premier barbershop. Professional cuts, classic shaves, and modern styling for all ages in a welcoming atmosphere.
+            Experience the best, in men's and kids' haircuts at Smithtown's best barbershop. Professional cuts, classic shaves, and modern styling for all ages in a welcoming and friendly atmosphere.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
@@ -138,7 +138,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
               </div>
               <h3 className="text-2xl font-semibold mb-3 text-man-cave-accent font-serif">Classic Cuts</h3>
-              <p className="text-man-cave-light leading-relaxed">Traditional and modern haircuts crafted with precision and attention to detail.</p>
+              <p className="text-man-cave-light leading-relaxed">Traditional and modern haircuts tailored to your needs.</p>
             </div>
             
             <div className="group cursor-pointer">
@@ -151,7 +151,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
               </div>
               <h3 className="text-2xl font-semibold mb-3 text-man-cave-accent font-serif">Hot Shaves</h3>
-              <p className="text-man-cave-light leading-relaxed">Experience the luxury of a traditional straight razor shave with hot towel treatment.</p>
+              <p className="text-man-cave-light leading-relaxed">Experience a traditional straight razor shave with hot towel treatment.</p>
             </div>
             
             <div className="group cursor-pointer">
@@ -164,7 +164,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
               </div>
               <h3 className="text-2xl font-semibold mb-3 text-man-cave-accent font-serif">Styling</h3>
-              <p className="text-man-cave-light leading-relaxed">Professional styling and grooming using premium products for the perfect finish.</p>
+              <p className="text-man-cave-light leading-relaxed">Professional styling and grooming using our excellent products and craftmanship, for the perfect finish.</p>
             </div>
           </div>
         </div>
@@ -177,13 +177,13 @@ export default function Home() {
             <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-8 font-serif">About <span className="text-man-cave-accent">Man Cave</span></h2>
               <p className="text-lg text-man-cave-light mb-6 leading-relaxed">
-                Welcome to Man Cave, Smithtown's destination for men's and kids' haircuts and style. We've created a sophisticated yet relaxed atmosphere where modern techniques meet traditional barbering craftsmanship.
+              Welcome to Man Cave — Smithtowns go-to spot for fresh cuts and clean styles for men and kids. We have built a laid-back, classic barbershop vibe where you get a mix of old-school skill and modern style.
               </p>
               <p className="text-lg text-man-cave-light mb-6 leading-relaxed">
-                Our skilled barbers provide professional cuts, classic hot towel shaves, and personalized grooming services for men and children in a truly welcoming environment. Whether you're looking for a sharp business cut, a fun kids' style, or a classic vintage look, we deliver precision and quality every time.
+              At Man Cave, Jerome and Kenny keep things simple — great haircuts, clean shaves, and a friendly vibe. Whether you need a fresh trim, a classic shave, or a cool cut for the kids, they'll make sure you leave looking sharp and feeling good. 
               </p>
               <p className="text-lg text-man-cave-light leading-relaxed">
-                Step into our cave and experience the difference that attention to detail, premium products, and old-school hospitality can make.
+              Step into the ManCave and experience the difference that attention to detail, excellent products, and old-school ways can make.
               </p>
             </div>
             <div className="relative">
@@ -285,7 +285,7 @@ export default function Home() {
         <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 font-serif">Ready for Your <span className="text-man-cave-accent">Best Look</span>?</h2>
           <p className="text-xl text-man-cave-light mb-10 max-w-2xl mx-auto leading-relaxed">
-            Don't wait to experience the finest in men's and kids' haircuts. Book your appointment today and discover why Man Cave is Smithtown's premier barbershop for all ages.
+            Don't wait, book your appointment today and discover why Man Cave is Smithtown's go-to barbershop for all ages.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
