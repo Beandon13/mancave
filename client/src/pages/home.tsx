@@ -6,6 +6,7 @@ import hotShaveImg from "../assets/hot-shave.jpg";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +21,8 @@ export default function Home() {
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Close mobile menu after navigation
+      setIsMobileMenuOpen(false);
     }
   };
 
@@ -42,8 +45,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-man-cave-accent font-serif">Man Cave</h1>
+              <h1 className="text-3xl font-bold text-man-cave-accent font-serif tracking-wide">Man Cave</h1>
             </div>
+            {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
                 <button 
@@ -59,6 +63,12 @@ export default function Home() {
                   About
                 </button>
                 <button 
+                  onClick={() => smoothScroll('gallery')}
+                  className="hover:text-man-cave-accent transition-colors duration-300"
+                >
+                  Gallery
+                </button>
+                <button 
                   onClick={() => smoothScroll('hours')}
                   className="hover:text-man-cave-accent transition-colors duration-300"
                 >
@@ -72,15 +82,110 @@ export default function Home() {
                 </button>
               </div>
             </div>
+            
+            {/* Call Now Button - Desktop */}
             <a 
               href="tel:631-257-5212" 
-              className="bg-man-cave-accent text-man-cave-primary px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
+              className="hidden md:inline-flex bg-man-cave-accent text-man-cave-primary px-4 py-2 rounded-lg font-semibold hover:opacity-90 transition-all duration-300"
             >
               <i className="fas fa-phone mr-2"></i>Call Now
             </a>
+            
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden text-man-cave-accent hover:text-white transition-colors duration-300 p-2"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <i className="fas fa-times text-2xl"></i>
+              ) : (
+                <i className="fas fa-bars text-2xl"></i>
+              )}
+            </button>
           </div>
         </div>
       </nav>
+      
+      {/* Mobile Navigation Menu */}
+      <div className={`fixed inset-0 bg-black/70 z-40 md:hidden transition-opacity duration-300 ${
+        isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      }`} onClick={() => setIsMobileMenuOpen(false)} />
+      
+      <div className={`fixed right-0 top-16 h-[calc(100%-4rem)] w-80 bg-man-cave-primary z-50 md:hidden transform transition-transform duration-300 shadow-2xl border-l border-man-cave-accent/20 ${
+        isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}>
+        <div className="h-full flex flex-col">
+          <div className="p-6 border-b border-man-cave-secondary">
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl text-man-cave-light">Navigation</h2>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-man-cave-accent hover:text-white transition-colors duration-300 p-2 -mr-2"
+                aria-label="Close mobile menu"
+              >
+                <i className="fas fa-times text-2xl"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div className="flex-1 overflow-y-auto">
+            <nav className="p-6 space-y-2">
+              <button
+                onClick={() => smoothScroll('home')}
+                className="w-full flex items-center text-left text-lg text-white hover:text-man-cave-accent hover:bg-man-cave-secondary/50 transition-all duration-300 py-4 px-4 rounded-lg"
+              >
+                <i className="fas fa-home text-man-cave-accent w-8"></i>
+                Home
+              </button>
+              <button
+                onClick={() => smoothScroll('about')}
+                className="w-full flex items-center text-left text-lg text-white hover:text-man-cave-accent hover:bg-man-cave-secondary/50 transition-all duration-300 py-4 px-4 rounded-lg"
+              >
+                <i className="fas fa-info-circle text-man-cave-accent w-8"></i>
+                About
+              </button>
+              <button
+                onClick={() => smoothScroll('gallery')}
+                className="w-full flex items-center text-left text-lg text-white hover:text-man-cave-accent hover:bg-man-cave-secondary/50 transition-all duration-300 py-4 px-4 rounded-lg"
+              >
+                <i className="fas fa-images text-man-cave-accent w-8"></i>
+                Gallery
+              </button>
+              <button
+                onClick={() => smoothScroll('hours')}
+                className="w-full flex items-center text-left text-lg text-white hover:text-man-cave-accent hover:bg-man-cave-secondary/50 transition-all duration-300 py-4 px-4 rounded-lg"
+              >
+                <i className="fas fa-clock text-man-cave-accent w-8"></i>
+                Hours
+              </button>
+              <button
+                onClick={() => smoothScroll('contact')}
+                className="w-full flex items-center text-left text-lg text-white hover:text-man-cave-accent hover:bg-man-cave-secondary/50 transition-all duration-300 py-4 px-4 rounded-lg"
+              >
+                <i className="fas fa-envelope text-man-cave-accent w-8"></i>
+                Contact
+              </button>
+            </nav>
+            
+            <div className="p-6 border-t border-man-cave-secondary">
+              <a
+                href="tel:631-257-5212"
+                className="w-full bg-man-cave-accent text-man-cave-primary px-6 py-4 rounded-lg text-lg font-bold hover:opacity-90 transition-all duration-300 flex items-center justify-center shadow-lg"
+              >
+                <i className="fas fa-phone mr-3"></i>
+                Call Now: (631) 257-5212
+              </a>
+              
+              <div className="mt-6 text-center text-man-cave-light text-sm space-y-1">
+                <p className="font-semibold text-man-cave-accent">Visit Us</p>
+                <p>135 West Main Street</p>
+                <p>Smithtown, NY 11787</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -93,8 +198,8 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/70"></div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 font-serif">
-            <span className="text-white">Man</span> <span className="text-man-cave-accent">Cave</span>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 logo-text text-white">
+            Man Cave
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-man-cave-light font-light tracking-wide">
             Where Style Meets Precision
@@ -119,57 +224,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section className="py-20 bg-man-cave-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">Our Craft</h2>
-            <p className="text-xl text-man-cave-light max-w-2xl mx-auto">Precision cuts, classic shaves, and modern styling techniques</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-xl mb-6">
-                <img 
-                  src={classicCutImg}
-                  alt="Professional barber tools" 
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700" 
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </div>
-              <h3 className="text-2xl font-semibold mb-3 text-man-cave-accent font-serif">Classic Cuts</h3>
-              <p className="text-man-cave-light leading-relaxed">Traditional and modern haircuts tailored to your needs.</p>
-            </div>
-            
-            <div className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-xl mb-6">
-                <img 
-                  src={hotShaveImg}
-                  alt="Straight razor shaving setup" 
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700" 
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </div>
-              <h3 className="text-2xl font-semibold mb-3 text-man-cave-accent font-serif">Hot Shaves</h3>
-              <p className="text-man-cave-light leading-relaxed">Experience a traditional straight razor shave with hot towel treatment.</p>
-            </div>
-            
-            <div className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-xl mb-6">
-                <img 
-                  src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                  alt="Modern barbershop styling products" 
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700" 
-                />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
-              </div>
-              <h3 className="text-2xl font-semibold mb-3 text-man-cave-accent font-serif">Styling</h3>
-              <p className="text-man-cave-light leading-relaxed">Styling and grooming that makes you look your finest.</p> 
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* About Section */}
       <section id="about" className="py-20 bg-man-cave-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -180,7 +234,7 @@ export default function Home() {
               Welcome to Man Cave — Smithtowns go-to spot for fresh cuts and clean styles for men and kids. We have built a laid-back, classic barbershop vibe where you get a mix of old-school skill and modern style.
               </p>
               <p className="text-lg text-man-cave-light mb-6 leading-relaxed">
-              At Man Cave, Jerome and Kenny keep things simple — great haircuts, clean shaves, and a friendly vibe. Whether you need a fresh trim, a classic shave, or a cool cut for the kids, they'll make sure you leave looking sharp and feeling good. 
+              At Man Cave, Jerome keeps things simple — great haircuts, clean shaves, and a friendly vibe. Whether you need a fresh trim, a classic shave, or a cool cut for the kids, he'll make sure you leave looking sharp and feeling good. 
               </p>
               <p className="text-lg text-man-cave-light leading-relaxed">
               Step into the Man Cave and experience the difference that attention to detail, excellent products, and old-school ways can make.
@@ -205,20 +259,325 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Meet Your Barber Section */}
+      <section className="py-20 bg-man-cave-secondary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif text-man-cave-accent">Meet Your Barber</h2>
+            <p className="text-xl text-man-cave-light max-w-2xl mx-auto">Master craftsmanship meets modern style</p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="bg-man-cave-primary rounded-xl p-8 shadow-xl">
+                <h3 className="text-3xl font-bold mb-4 text-man-cave-accent font-serif">Jerome</h3>
+                <p className="text-xl text-man-cave-accent mb-4">Master Barber & Owner</p>
+                
+                <div className="space-y-4 text-man-cave-light">
+                  <p className="leading-relaxed">
+                    With over 15 years of experience in the barbering industry, Jerome has mastered the art of classic cuts and modern styling techniques. His attention to detail and passion for the craft ensure every client leaves looking and feeling their best.
+                  </p>
+                  
+                  <div className="pt-4">
+                    <h4 className="font-semibold text-white mb-3">Specialties:</h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-center">
+                        <i className="fas fa-check-circle text-man-cave-accent mr-3"></i>
+                        Classic & Modern Men's Haircuts
+                      </li>
+                      <li className="flex items-center">
+                        <i className="fas fa-check-circle text-man-cave-accent mr-3"></i>
+                        Kids' Cuts & Styling
+                      </li>
+                      <li className="flex items-center">
+                        <i className="fas fa-check-circle text-man-cave-accent mr-3"></i>
+                        Traditional Hot Shaves
+                      </li>
+                      <li className="flex items-center">
+                        <i className="fas fa-check-circle text-man-cave-accent mr-3"></i>
+                        Beard Trims & Grooming
+                      </li>
+                      <li className="flex items-center">
+                        <i className="fas fa-check-circle text-man-cave-accent mr-3"></i>
+                        Hair & Scalp Treatments
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="pt-4">
+                    <p className="text-5xl text-man-cave-accent text-center">
+                      " "
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="order-1 lg:order-2">
+              <div className="relative">
+                <div className="bg-man-cave-primary rounded-xl shadow-2xl overflow-hidden aspect-[3/4]">
+                  <div className="w-full h-full bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                    <div className="text-center p-8">
+                      <i className="fas fa-user-tie text-8xl text-man-cave-accent mb-4"></i>
+                      <p className="text-man-cave-light">Professional Photo Coming Soon</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute -bottom-4 -left-4 bg-man-cave-accent text-man-cave-primary p-4 rounded-lg">
+                  <div className="flex items-center space-x-2">
+                    <i className="fas fa-award text-2xl"></i>
+                    <div>
+                      <div className="font-bold">15+ Years</div>
+                      <div className="text-xs">Master Barber</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section id="gallery" className="py-20 bg-man-cave-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">
+              Our <span className="text-man-cave-accent">Work</span>
+            </h2>
+            <p className="text-xl text-man-cave-light max-w-2xl mx-auto">
+              See the results for yourself - precision cuts and styling that speak volumes
+            </p>
+          </div>
+          
+          {/* Gallery Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Photo Placeholder 1 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-cut text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Haircut Photo 1</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your image here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-search-plus text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+            
+            {/* Photo Placeholder 2 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-cut text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Haircut Photo 2</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your image here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-search-plus text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+            
+            {/* Video Placeholder 1 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-video text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Haircut Video 1</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your video here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-play-circle text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+            
+            {/* Photo Placeholder 3 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-cut text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Beard Trim Photo</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your image here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-search-plus text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+            
+            {/* Photo Placeholder 4 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-cut text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Kids Cut Photo</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your image here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-search-plus text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+            
+            {/* Photo Placeholder 5 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-cut text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Fade Photo</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your image here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-search-plus text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+            
+            {/* Video Placeholder 2 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-video text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Styling Video</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your video here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-play-circle text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+            
+            {/* Photo Placeholder 6 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-cut text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Hot Shave Photo</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your image here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-search-plus text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+            
+            {/* Photo Placeholder 7 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-cut text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Design Cut Photo</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your image here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-search-plus text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+            
+            {/* Video Placeholder 3 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-video text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Transformation Video</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your video here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-play-circle text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+            
+            {/* Photo Placeholder 8 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-cut text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Classic Cut Photo</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your image here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-search-plus text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+            
+            {/* Photo Placeholder 9 */}
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
+                <div className="text-center p-6">
+                  <i className="fas fa-cut text-5xl text-man-cave-accent mb-3 opacity-50"></i>
+                  <p className="text-man-cave-light text-sm">Modern Style Photo</p>
+                  <p className="text-man-cave-accent text-xs mt-1">Add your image here</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <i className="fas fa-search-plus text-3xl text-man-cave-accent"></i>
+              </div>
+            </div>
+          </div>
+          
+          {/* Gallery Footer */}
+          <div className="text-center mt-12">
+            <p className="text-man-cave-light text-lg mb-4">
+              Follow our work and book your transformation today
+            </p>
+            <a 
+              href="tel:631-257-5212" 
+              className="inline-flex items-center bg-man-cave-accent text-man-cave-primary px-8 py-4 rounded-lg text-lg font-bold hover:opacity-90 transform hover:scale-105 transition-all duration-300 shadow-xl"
+            >
+              <i className="fas fa-calendar-check mr-3"></i>
+              Book Your Appointment
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Booking Section Placeholder */}
+      <section id="booking" className="py-20 bg-man-cave-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="bg-man-cave-secondary rounded-xl p-12 max-w-3xl mx-auto shadow-2xl">
+              <i className="fas fa-calendar-check text-6xl text-man-cave-accent mb-6"></i>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">
+                Online Booking <span className="text-man-cave-accent">Coming Soon!</span>
+              </h2>
+              <p className="text-xl text-man-cave-light mb-8 max-w-2xl mx-auto">
+                We're working on bringing you convenient online booking. Soon you'll be able to schedule your appointment with just a few clicks.
+              </p>
+              <p className="text-lg text-man-cave-light mb-8">
+                In the meantime, give us a call to book your appointment.
+              </p>
+              <a 
+                href="tel:631-257-5212" 
+                className="inline-flex items-center bg-man-cave-accent text-man-cave-primary px-10 py-5 rounded-lg text-xl font-bold hover:opacity-90 transform hover:scale-105 transition-all duration-300 shadow-xl"
+              >
+                <i className="fas fa-phone mr-3"></i>
+                Call Now: (631) 257-5212
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Hours & Contact Section */}
       <section id="hours" className="py-20 bg-man-cave-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Hours of Operation */}
-            <div className="bg-man-cave-primary rounded-xl p-8 shadow-xl">
-              <h3 className="text-3xl font-bold mb-8 text-man-cave-accent font-serif flex items-center">
-                <i className="fas fa-clock mr-4"></i>Hours of Operation
+            <div className="bg-man-cave-primary rounded-xl p-6 shadow-xl">
+              <h3 className="text-2xl font-bold mb-6 text-man-cave-accent font-serif flex items-center">
+                <i className="fas fa-clock mr-3"></i>Hours
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {operatingHours.map((schedule, index) => (
-                  <div key={index} className="flex justify-between items-center py-3 border-b border-man-cave-secondary/50 last:border-b-0">
-                    <span className="font-semibold text-white">{schedule.day}</span>
-                    <span className={schedule.highlight ? "text-man-cave-accent font-semibold" : "text-man-cave-light"}>
+                  <div key={index} className="flex justify-between items-center py-2 border-b border-man-cave-secondary/50 last:border-b-0">
+                    <span className="font-semibold text-white text-sm">{schedule.day}</span>
+                    <span className={schedule.highlight ? "text-man-cave-accent font-semibold text-sm" : "text-man-cave-light text-sm"}>
                       {schedule.hours}
                     </span>
                   </div>
@@ -227,45 +586,80 @@ export default function Home() {
             </div>
 
             {/* Contact Information */}
-            <div className="bg-man-cave-primary rounded-xl p-8 shadow-xl">
-              <h3 className="text-3xl font-bold mb-8 text-man-cave-accent font-serif flex items-center">
-                <i className="fas fa-map-marker-alt mr-4"></i>Visit Us
+            <div className="bg-man-cave-primary rounded-xl p-6 shadow-xl">
+              <h3 className="text-2xl font-bold mb-6 text-man-cave-accent font-serif flex items-center">
+                <i className="fas fa-map-marker-alt mr-3"></i>Visit Us
               </h3>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-man-cave-accent text-man-cave-primary p-3 rounded-lg">
-                    <i className="fas fa-map-marker-alt"></i>
+              <div className="space-y-5">
+                <div className="flex items-start space-x-3">
+                  <div className="bg-man-cave-accent text-man-cave-primary p-2 rounded-lg">
+                    <i className="fas fa-map-marker-alt text-sm"></i>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-white mb-1">Address</h4>
-                    <p className="text-man-cave-light leading-relaxed">135 West Main Street<br />Smithtown, NY</p>
+                    <h4 className="font-semibold text-white mb-1 text-sm">Address</h4>
+                    <p className="text-man-cave-light text-sm leading-relaxed">135 West Main Street<br />Smithtown, NY 11787</p>
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <div className="bg-man-cave-accent text-man-cave-primary p-3 rounded-lg">
-                    <i className="fas fa-phone"></i>
+                <div className="flex items-start space-x-3">
+                  <div className="bg-man-cave-accent text-man-cave-primary p-2 rounded-lg">
+                    <i className="fas fa-phone text-sm"></i>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-white mb-1">Phone</h4>
+                    <h4 className="font-semibold text-white mb-1 text-sm">Phone</h4>
                     <a 
                       href="tel:631-257-5212" 
-                      className="text-man-cave-accent hover:opacity-80 transition-colors text-lg font-semibold"
+                      className="text-man-cave-accent hover:opacity-80 transition-colors font-semibold"
                     >
                       (631) 257-5212
                     </a>
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <div className="bg-man-cave-accent text-man-cave-primary p-3 rounded-lg">
-                    <i className="fas fa-cut"></i>
+                <div className="flex items-start space-x-3">
+                  <div className="bg-man-cave-accent text-man-cave-primary p-2 rounded-lg">
+                    <i className="fas fa-cut text-sm"></i>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-white mb-1">Services</h4>
-                    <p className="text-man-cave-light">Haircuts (Men & Kids) • Shaves • Styling<br />Beard Trims • Grooming</p>
+                    <h4 className="font-semibold text-white mb-1 text-sm">Services</h4>
+                    <p className="text-man-cave-light text-sm">Haircuts • Shaves • Styling<br />Beard Trims • Grooming</p>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Google Maps */}
+            <div className="bg-man-cave-primary rounded-xl p-6 shadow-xl lg:col-span-1 md:col-span-2">
+              <h3 className="text-2xl font-bold mb-6 text-man-cave-accent font-serif flex items-center">
+                <i className="fas fa-map mr-3"></i>Find Us
+              </h3>
+              <div className="relative w-full h-[300px] lg:h-[350px] rounded-lg overflow-hidden shadow-inner">
+                <div className="absolute inset-0 bg-man-cave-secondary/20"></div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d755.4627151514746!2d-73.20008717076895!3d40.85578769871766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e83bfbe279425b%3A0xa35afc1b031c414f!2sMan%20cave%20Barbershop%40%20Karisma%20salon!5e0!3m2!1sen!2sus!4v1723742400000!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ 
+                    border: 0,
+                    filter: 'invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%)'
+                  }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0"
+                  title="Man Cave Barbershop @ Karisma Salon Location"
+                ></iframe>
+              </div>
+              <div className="mt-4 text-center">
+                <a 
+                  href="https://www.google.com/maps/dir//Man+cave+Barbershop+@+Karisma+salon,+135+W+Main+St,+Smithtown,+NY+11787/@40.8557877,-73.1993847,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x89e83bfbe279425b:0xa35afc1b031c414f!2m2!1d-73.1993847!2d40.8557877"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-man-cave-accent hover:opacity-80 transition-colors text-sm font-semibold"
+                >
+                  <i className="fas fa-directions mr-2"></i>
+                  Get Directions
+                </a>
               </div>
             </div>
           </div>

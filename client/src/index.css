@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap');
 
 :root {
   --background: 0 0% 100%;
@@ -108,6 +108,14 @@
   
   .font-sans {
     font-family: 'Inter', sans-serif;
+  }
+  
+  /* Custom logo font for barbershop aesthetic */
+  .logo-text {
+    font-family: 'Oswald', serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   nav {
