@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap');
 
 :root {
   --background: 0 0% 100%;
@@ -26,13 +26,14 @@
   --ring: 20 14.3% 4.1%;
   --radius: 0.5rem;
   
-  /* Man Cave Custom Colors */
-  --man-cave-primary: #1a1a1a; /* Charcoal */
-  --man-cave-secondary: #2a2a2a; /* Gunmetal */
-  --man-cave-accent: #c0c0c0; /* Metallic silver */
-  --man-cave-light: #e0e0e0; /* Light gray */
-  --man-cave-dark: #0a0a0a; /* Matte black */
-  --man-cave-texture: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a1a1a" /><path d="M0 0 L100 100 M100 0 L0 100" stroke="%232a2a2a" stroke-width="0.5" /></svg>');
+  /* Man Cave Custom Colors - Ultra Dark Gray Palette */
+  --man-cave-primary: #0D0D0D; /* Ultra Dark Gray - Main backgrounds */
+  --man-cave-secondary: #1A1A1A; /* Very Dark Gray - Cards and nav */
+  --man-cave-accent: #C0392B; /* Deep Red/Burgundy - Buttons and highlights */
+  --man-cave-light: #ECF0F1; /* Off-White - Text content */
+  --man-cave-subtle: #BDC3C7; /* Light Gray - Subtle backgrounds and borders */
+  --man-cave-dark: #0D0D0D; /* Same as primary for consistency */
+  --man-cave-texture: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230D0D0D" /><path d="M0 0 L100 100 M100 0 L0 100" stroke="%231A1A1A" stroke-width="0.5" /></svg>');
 }
 
 .dark {
@@ -79,27 +80,39 @@
 
 @layer utilities {
   .bg-man-cave-primary {
-    background-color: hsl(var(--man-cave-primary));
+    background-color: var(--man-cave-primary);
   }
   
   .bg-man-cave-secondary {
-    background-color: hsl(var(--man-cave-secondary));
+    background-color: var(--man-cave-secondary);
   }
   
   .bg-man-cave-accent {
-    background-color: hsl(var(--man-cave-accent));
+    background-color: var(--man-cave-accent);
+  }
+  
+  .bg-man-cave-subtle {
+    background-color: var(--man-cave-subtle);
   }
   
   .text-man-cave-accent {
-    color: hsl(var(--man-cave-accent));
+    color: var(--man-cave-accent);
   }
   
   .text-man-cave-light {
-    color: hsl(var(--man-cave-light));
+    color: var(--man-cave-light);
+  }
+  
+  .text-man-cave-subtle {
+    color: var(--man-cave-subtle);
   }
   
   .border-man-cave-accent {
-    border-color: hsl(var(--man-cave-accent));
+    border-color: var(--man-cave-accent);
+  }
+  
+  .border-man-cave-subtle {
+    border-color: var(--man-cave-subtle);
   }
   
   .font-serif {
@@ -120,7 +133,6 @@
 
   nav {
     background-color: var(--man-cave-secondary);
-    border-bottom: 1px solid var(--man-cave-accent);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
