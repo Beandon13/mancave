@@ -17,6 +17,10 @@ import modernFadeImg from "../assets/modern-fade.jpg";
 import textureCutImg from "../assets/texture-cut.jpg";
 import buzzCutImg from "../assets/buzz-cut.jpg";
 import undercutImg from "../assets/undercut.jpg";
+import headshotImg from "../assets/headshot.jpeg";
+import jeromeStyle1Img from "../assets/jerome-style-1.jpg";
+import jeromeStyle2Img from "../assets/jerome-style-2.jpg";
+import jeromeStyle3Img from "../assets/jerome-style-3.jpg";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,13 +46,13 @@ export default function Home() {
   };
 
   const operatingHours = [
-    { day: "Monday", hours: "9 AM – 5 PM" },
-    { day: "Tuesday", hours: "9 AM – 5 PM" },
-    { day: "Wednesday", hours: "9 AM – 8 PM" },
-    { day: "Thursday", hours: "9 AM – 9 PM", highlight: true },
-    { day: "Friday", hours: "9 AM – 5 PM" },
-    { day: "Saturday", hours: "9 AM – 5 PM" },
-    { day: "Sunday", hours: "9 AM – 5 PM" }
+    { day: "Monday", hours: "9:30 AM – 5 PM" },
+    { day: "Tuesday", hours: "9:30 AM – 5 PM" },
+    { day: "Wednesday", hours: "9:30 AM – 9 PM" },
+    { day: "Thursday", hours: "9:30 AM – 9 PM" },
+    { day: "Friday", hours: "9 AM – 9 PM" },
+    { day: "Saturday", hours: "Closed", closed: true },
+    { day: "Sunday", hours: "Closed", closed: true }
   ];
 
   return (
@@ -220,7 +224,7 @@ export default function Home() {
             Where Style Meets Precision
           </p>
           <p className="text-lg mb-10 text-man-cave-light max-w-2xl mx-auto leading-relaxed">
-            Experience the best, in men's and kids' haircuts at Smithtown's best barbershop. Professional cuts, classic shaves, and modern styling for all ages in a welcoming and friendly atmosphere.
+            Experience the best, in men's and kids' haircuts at Smithtown's best barbershop. Modern styles, classic shaves, and a quality experience for all customers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
@@ -244,15 +248,18 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 font-serif">About <span className="text-man-cave-accent">Man Cave</span></h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 logo-text">About <span className="text-man-cave-accent">Man Cave</span></h2>
               <p className="text-lg text-man-cave-light mb-6 leading-relaxed">
-              Welcome to Man Cave — Smithtowns go-to spot for fresh cuts and clean styles for men and kids. We have built a laid-back, classic barbershop vibe where you get a mix of old-school skill and modern style.
+                Man Cave is the best barbershop in Smithtown on West Main Street. Where we do haircuts the right way.
               </p>
               <p className="text-lg text-man-cave-light mb-6 leading-relaxed">
-              At Man Cave, Jerome keeps things simple — great haircuts, clean shaves, and a friendly vibe. Whether you need a fresh trim, a classic shave, or a cool cut for the kids, he'll make sure you leave looking sharp and feeling good. 
+                Jerome handles everything from regular men's cuts to fades, beard trims, hot towel shaves, and kids' haircuts. He's got you covered. Want that crisp lineup or just a basic trim? No problem.
+              </p>
+              <p className="text-lg text-man-cave-light mb-6 leading-relaxed">
+                The shop's is decorated top to bottom with pop culture. Jerome takes his time and gets it right no matter what cut you have in mind.
               </p>
               <p className="text-lg text-man-cave-light leading-relaxed">
-              Step into the Man Cave and experience the difference that attention to detail, excellent products, and old-school ways can make.
+                Come in, get a fresh haircut and leave feeling confident.
               </p>
             </div>
             <div className="relative">
@@ -261,14 +268,6 @@ export default function Home() {
   alt="Man Cave Barbershop interior"
   className="rounded-xl shadow-2xl w-full object-cover aspect-[4/5] max-h-[500px]"
 />
-
-
-              <div className="absolute -bottom-6 -right-6 bg-man-cave-accent text-man-cave-primary p-6 rounded-xl">
-                <div className="text-center">
-                  <div className="text-3xl font-bold">15+</div>
-                  <div className="text-sm font-semibold">Years Experience</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -278,15 +277,14 @@ export default function Home() {
       <section className="py-20 bg-man-cave-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif text-man-cave-accent">Meet Your Barber</h2>
-            <p className="text-xl text-man-cave-light max-w-2xl mx-auto">Master craftsmanship meets modern style</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 logo-text text-man-cave-accent">Meet Your Barber</h2>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
               <div className="bg-man-cave-primary rounded-xl p-8 shadow-xl">
-                <h3 className="text-3xl font-bold mb-4 text-man-cave-accent font-serif">Jerome</h3>
-                <p className="text-xl text-man-cave-accent mb-4">Master Barber & Owner</p>
+                <h3 className="text-3xl font-bold mb-4 text-man-cave-accent logo-text">Jerome</h3>
+                <p className="text-xl text-man-cave-accent mb-4">Owner & Barber</p>
                 
                 <div className="space-y-4 text-man-cave-light">
                   <p className="leading-relaxed">
@@ -314,16 +312,11 @@ export default function Home() {
                       </li>
                       <li className="flex items-center">
                         <i className="fas fa-check-circle text-man-cave-accent mr-3"></i>
-                        Hair & Scalp Treatments
+                        Shape Ups
                       </li>
                     </ul>
                   </div>
                   
-                  <div className="pt-4">
-                    <p className="text-5xl text-man-cave-accent text-center">
-                      " "
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>
@@ -331,12 +324,12 @@ export default function Home() {
             <div className="order-1 lg:order-2">
               <div className="relative">
                 <div className="bg-man-cave-primary rounded-xl shadow-2xl overflow-hidden aspect-[3/4]">
-                  <div className="w-full h-full bg-gradient-to-br from-man-cave-secondary to-man-cave-primary flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <i className="fas fa-user-tie text-8xl text-man-cave-accent mb-4"></i>
-                      <p className="text-man-cave-light">Professional Photo Coming Soon</p>
-                    </div>
-                  </div>
+                  <img
+                    src={headshotImg}
+                    alt="Jerome professional headshot"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="absolute -bottom-4 -left-4 bg-man-cave-accent text-man-cave-primary p-4 rounded-lg">
                   <div className="flex items-center space-x-2">
@@ -357,11 +350,11 @@ export default function Home() {
       <section id="gallery" className="py-20 bg-man-cave-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif">
-              Our <span className="text-man-cave-accent">Work</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 logo-text">
+              Jerome's <span className="text-man-cave-accent">Work</span>
             </h2>
             <p className="text-xl text-man-cave-light max-w-2xl mx-auto">
-              See the results for yourself - precision cuts and styling that speak volumes
+              See the results for yourself
             </p>
           </div>
           
@@ -486,6 +479,30 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
+
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <img
+                src={jeromeStyle1Img}
+                alt="Sharp fade and beard lineup"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <img
+                src={jeromeStyle2Img}
+                alt="Detailed design haircut"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="group relative bg-man-cave-secondary rounded-xl overflow-hidden aspect-square shadow-xl hover:shadow-2xl transition-all duration-300">
+              <img
+                src={jeromeStyle3Img}
+                alt="Precision haircut with clean lineup"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
           
           {/* Gallery Footer */}
@@ -511,14 +528,20 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Hours of Operation */}
             <div className="bg-man-cave-primary rounded-xl p-6 shadow-xl">
-              <h3 className="text-2xl font-bold mb-6 text-man-cave-accent font-serif flex items-center">
+              <h3 className="text-2xl font-bold mb-6 text-man-cave-accent logo-text flex items-center">
                 <i className="fas fa-clock mr-3"></i>Hours
               </h3>
               <div className="space-y-3">
                 {operatingHours.map((schedule, index) => (
                   <div key={index} className="flex justify-between items-center py-2 border-b border-man-cave-secondary/50 last:border-b-0">
                     <span className="font-semibold text-white text-sm">{schedule.day}</span>
-                    <span className={schedule.highlight ? "text-man-cave-accent font-semibold text-sm" : "text-man-cave-light text-sm"}>
+                    <span className={
+                      schedule.closed
+                        ? "text-gray-500 text-sm italic"
+                        : schedule.highlight
+                          ? "text-man-cave-accent font-semibold text-sm"
+                          : "text-man-cave-light text-sm"
+                    }>
                       {schedule.hours}
                     </span>
                   </div>
@@ -528,7 +551,7 @@ export default function Home() {
 
             {/* Contact Information */}
             <div className="bg-man-cave-primary rounded-xl p-6 shadow-xl">
-              <h3 className="text-2xl font-bold mb-6 text-man-cave-accent font-serif flex items-center">
+              <h3 className="text-2xl font-bold mb-6 text-man-cave-accent logo-text flex items-center">
                 <i className="fas fa-map-marker-alt mr-3"></i>Visit Us
               </h3>
               <div className="space-y-5">
@@ -571,7 +594,7 @@ export default function Home() {
 
             {/* Google Maps */}
             <div className="bg-man-cave-primary rounded-xl p-6 shadow-xl lg:col-span-1 md:col-span-2">
-              <h3 className="text-2xl font-bold mb-6 text-man-cave-accent font-serif flex items-center">
+              <h3 className="text-2xl font-bold mb-6 text-man-cave-accent logo-text flex items-center">
                 <i className="fas fa-map mr-3"></i>Find Us
               </h3>
               <div className="relative w-full h-[300px] lg:h-[350px] rounded-lg overflow-hidden shadow-inner">
@@ -607,50 +630,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call to Action Section */}
-      <section id="contact" className="py-20 bg-man-cave-primary relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <img 
-            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080" 
-            alt="Atmospheric barbershop scene" 
-            className="w-full h-full object-cover" 
-          />
-        </div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-serif">Ready for Your <span className="text-man-cave-accent">Best Look</span>?</h2>
-          <p className="text-xl text-man-cave-light mb-10 max-w-2xl mx-auto leading-relaxed">
-            Don't wait, book your appointment today and discover why Man Cave is Smithtown's go-to barbershop for all ages.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button
-              onClick={() => setIsBookingModalOpen(true)}
-              className="bg-man-cave-accent text-man-cave-primary px-10 py-5 rounded-lg text-xl font-bold hover:opacity-90 transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center shadow-xl"
-            >
-              <i className="fas fa-calendar-check mr-3"></i>
-              Book Online Now
-            </button>
-            <a
-              href="tel:631-257-5212"
-              className="border-2 border-man-cave-accent text-man-cave-accent px-10 py-5 rounded-lg text-xl font-bold hover:bg-man-cave-accent hover:text-man-cave-primary transition-all duration-300 inline-flex items-center justify-center"
-            >
-              <i className="fas fa-phone mr-3"></i>
-              Call (631) 257-5212
-            </a>
-          </div>
-          
-          <div className="mt-12 text-center">
-            <p className="text-man-cave-light text-sm">Premium grooming • Professional service</p>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="bg-black py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h3 className="text-3xl font-bold text-man-cave-accent mb-4 font-serif">Man Cave</h3>
+            <h3 className="text-3xl font-bold text-man-cave-accent mb-4 logo-text">Man Cave</h3>
             <p className="text-man-cave-light mb-4">Where Style Meets Precision</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-man-cave-light">
               <span>135 West Main Street, Smithtown, NY</span>
